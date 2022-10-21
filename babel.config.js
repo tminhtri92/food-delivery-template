@@ -7,6 +7,7 @@ module.exports = {
         alias: {
           // This needs to be mirrored in tsconfig.json
           "@src": "./src",
+          "@utils": "./src/utils"
         },
       },
     ],
