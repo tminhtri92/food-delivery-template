@@ -1,4 +1,4 @@
-import { Logger } from "./Logger";
+import { Logger } from './Logger';
 
 /**
  * Get Current Router Name
@@ -6,11 +6,11 @@ import { Logger } from "./Logger";
  * @param currentRouteName
  */
 export const screenTracking = (
-    previousRouteName: string | undefined,
-    currentRouteName: string
+  previousRouteName: string | undefined,
+  currentRouteName: string,
 ): void => {
-    Logger.log("currentRouteName", currentRouteName);
-    if (previousRouteName !== currentRouteName) {
-        // track something
-    }
+  Logger.log('currentRouteName', currentRouteName);
+  if (previousRouteName !== currentRouteName) {
+    // track something
+  }
 };

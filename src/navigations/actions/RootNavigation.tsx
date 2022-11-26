@@ -1,19 +1,21 @@
+import { createRef } from 'react';
+
 import {
     DrawerActions,
     NavigationContainerRef,
     NavigationProp,
     ParamListBase,
     StackActions,
-    TabActions
+    TabActions,
 } from '@react-navigation/native';
-import { createRef } from 'react';
+
 import { Logger } from '@utils/Logger';
 
 export const navigationRef = createRef<NavigationContainerRef<any>>();
 
 export const navigateScreen = (
     screen: string,
-    params: Record<string, unknown> | undefined = undefined
+    params: Record<string, unknown> | undefined = undefined,
 ): void => {
     try {
         navigationRef.current?.navigate(screen, params);
@@ -23,7 +25,7 @@ export const navigateScreen = (
 };
 export const pushScreen = (
     screen: string,
-    params: Record<string, unknown> | undefined = undefined
+    params: Record<string, unknown> | undefined = undefined,
 ): void => {
     try {
         navigationRef.current?.dispatch(StackActions.push(screen, params));
@@ -34,7 +36,7 @@ export const pushScreen = (
 
 export const replaceScreen = (
     screen: string,
-    params: Record<string, unknown> | undefined = undefined
+    params: Record<string, unknown> | undefined = undefined,
 ): void => {
     navigationRef.current?.dispatch(StackActions.replace(screen, params));
 };
@@ -42,42 +44,38 @@ export const goBack = (): void => {
     navigationRef.current?.canGoBack() && navigationRef.current?.goBack();
 };
 
-export const resetNavigator = (screen: string, params = {}): void =>
-    navigationRef.current?.reset({
-        index: 0,
-        routes: [{ name: screen, params }]
-    });
+export const resetNavigator = (screen: string, params = {}): void => navigationRef.current?.reset({
+    index: 0,
+    routes: [{ name: screen, params }],
+});
 
-export const backToTopScreen = (): void =>
-    navigationRef.current?.dispatch(StackActions.popToTop());
+export const backToTopScreen = (): void => navigationRef.current?.dispatch(StackActions.popToTop());
 
-export const backToOthersScreen = (key: number | undefined): void =>
-    navigationRef.current?.dispatch(StackActions.pop(key));
+export const backToOthersScreen = (key: number | undefined): void => navigationRef.current?.dispatch(StackActions.pop(key));
 
-export const jumpToTab = (screen: string, params = {}): void =>
-    navigationRef.current?.dispatch(TabActions.jumpTo(screen, params));
+export const jumpToTab = (screen: string, params = {}): void => navigationRef.current?.dispatch(TabActions.jumpTo(screen, params));
 
 export const openDrawer = (): void => {
     navigationRef.current?.dispatch(DrawerActions.toggleDrawer());
 };
 
 export const hideBottomTab = (
-    navigation: NavigationProp<ParamListBase>
+    navigation: NavigationProp<ParamListBase>,
 ): void => {
     const parent = navigation?.getParent();
-    parent &&
-        parent.setOptions &&
-        parent.setOptions({
-            tabBarVisible: false
+    parent
+        && parent.setOptions
+        && parent.setOptions({
+            tabBarVisible: false,
         });
 };
 export const showBottomTab = (
-    navigation: NavigationProp<ParamListBase>
+    navigation: NavigationProp<ParamListBase>,
 ): void => {
     const parent = navigation?.getParent();
-    parent &&
-        parent.setOptions &&
-        parent.setOptions({
-            tabBarVisible: true
+    parent
+        && parent.setOptions
+        && parent.setOptions({
+            tabBarVisible: true,
         });
 };

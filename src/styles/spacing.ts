@@ -1,0 +1,26 @@
+import { resWidth } from '@utils/Screen';
+
+export default {
+  s_4: resWidth(4),
+  s_5: resWidth(5),
+  s_6: resWidth(6),
+  s_7: resWidth(7),
+  s_8: resWidth(8),
+  s_10: resWidth(10),
+  s_12: resWidth(12),
+  m_16: resWidth(16),
+  m_18: resWidth(18),
+  m_20: resWidth(20),
+  m_21: resWidth(21),
+  l_24: resWidth(24),
+  l_26: resWidth(26),
+  l_28: resWidth(28),
+  l_29: resWidth(29),
+  l_32: resWidth(32),
+  l_34: resWidth(34),
+  l_36: resWidth(36),
+  l_40: resWidth(40),
+  l_42: resWidth(42),
+  l_48: resWidth(48),
+  l_100: resWidth(100),
+};

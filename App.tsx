@@ -8,10 +8,10 @@
  * @format
  */
 
-import { AppControlFlow } from "@src/AppFlowControl";
+import { AppControlFlow } from '@src/AppFlowControl';
 
-const App = () => {
-  return <AppControlFlow />
-};
+function App() {
+  return <AppControlFlow />;
+}
 
 export default App;

@@ -1,20 +1,22 @@
+import Platform from './Platform';
+
 /* eslint-disable no-console */
 class Logger {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static log(...params: any[]): void {
-    if (!__DEV__) {
+    if (Platform.isDev) {
       console.log(...params);
     }
   }
 
   static warn(...params: string[]): void {
-    if (!__DEV__) {
+    if (Platform.isDev) {
       console.warn(...params);
     }
   }
 
   static error(...params: Error[]): void {
-    if (!__DEV__) {
+    if (Platform.isDev) {
       console.error(...params);
     }
   }

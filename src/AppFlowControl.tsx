@@ -1,16 +1,17 @@
 import React, { useRef } from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { navigationRef } from './navigations/actions/RootNavigation';
 import { initialWindowMetrics, SafeAreaProvider } from 'react-native-safe-area-context';
+
+import { navigationRef } from '@navigations/actions/RootNavigation';
+import { RootNavigator } from '@navigations/navigators/RootNavigator';
 import { screenTracking } from '@utils/ScreenTracking';
 
-
-export const AppControlFlow = () => {
+function AppControlFlow() {
   const routeNameRef = useRef<string>();
   const onNavigationReady = (): void => {
     const route = navigationRef.current?.getCurrentRoute();
-    if (!!route) {
+    if (route) {
       routeNameRef.current = route.name;
       // store?.rootStore?.dispatch(setAppReady());
     }
@@ -33,10 +34,11 @@ export const AppControlFlow = () => {
       onStateChange={changeRouteName}
     >
       <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-        {/* <RootNavigator />
-        <GlobalModal /> */}
+        <RootNavigator />
+        {/* <GlobalModal /> */}
       </SafeAreaProvider>
     </NavigationContainer>
   );
-};
+}
 
+export { AppControlFlow };
